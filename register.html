@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Registration</title>
+</head>
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<link href='https://fonts.googleapis.com/css?family=New Rocker' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet'>
+<style>
+    body {
+        font-family: 'Oregano';
+        font-size: 22px;
+        /* background-image: url('http://getwallpapers.com/wallpaper/full/7/b/3/1273561-most-popular-best-wallpapers-for-twitter-1920x1080.jpg'); */
+        background-size: cover;
+        background-image: url(images/index3.jpg);
+    }
+    
+    body:before {
+        -webkit-filter: blur(2px);
+        -moz-filter: blur(2px);
+        -o-filter: blur(2px);
+        -ms-filter: blur(2px);
+        filter: blur(2px);
+    }
+    
+    h1 {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 300%;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.5);
+        background-size: cover;
+        color: rgb(255, 255, 255);
+        padding: 10px 2px 10px 2px;
+        font-family: 'New Rocker';
+        font-size: 22px;
+    }
+    
+    ::placeholder {
+        font-style: italic;
+    }
+    
+    button {
+        background-color: #4CAF50;
+        border-radius: 10px;
+        border: none;
+        color: rgb(255, 255, 255);
+        padding: 4px 15px 8px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    .jumbotron {
+        background: rgb(230, 223, 223);
+        background: rgba(255, 255, 255, 0.5);
+        padding-top: 24px;
+        padding-bottom: 28px;
+        font-size: 17px;
+        cursor: pointer;
+        width: 650px;
+    }
+    
+    a {
+        color: rgb(255, 51, 0);
+    }
+    
+    img {
+        opacity: 0.6;
+        filter: alpha(opacity=50);
+    }
+</style>
+
+<form action="register.php" method="POST" enctype="multipart/form-data">
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Registeration</h1>
+            <center>Choose a profile picture</center>
+
+            <!--Javascript-->
+
+            <center><img id="imgFileUpload" alt="Select File" title="Select File" src="images/user.png" onmouseover="this.src='images/plus.png'" onmouseout="this.src='images/user.png'" style="cursor: pointer" width="20%" /></center>
+
+            <br />
+            <span id="spnFilePath"></span>
+            <input type="file" id="FileUpload" name="FileUpload" style="display: none" />
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+            <script type="text/javascript">
+                $(function() {
+
+
+                    var fileupload = $("#FileUpload");
+                    var filePath = $("#spnFilePath");
+                    var image = $("#imgFileUpload");
+
+
+                    image.click(function() {
+                        fileupload.click();
+                    });
+
+
+                    fileupload.change(function() {
+                        var fileName = $(this).val().split('\\')[$(this).val().split('\\').length - 1];
+                        filePath.html("<b>Selected File: </b>" + fileName);
+                    });
+                });
+            </script>
+
+            <br><br> User ID : <input type="number" name="user_id" placeholder="Enter user id"><br><br> Username : <input type="text" name="name" placeholder="Enter username" required><br><br> Email : <input type="email" name="e_mail" placeholder="Enter email-id"
+                required><br><br> Password : <input type="password" name="password" placeholder="Enter password" required><br><br> Mobile : <input type="number" name="Mobile" placeholder="Enter mobile no."><br><br> Gender : <input type="radio" name="Gender"
+                value="Male"> Male
+            <input type="radio" name="Gender" value="Female"> Female
+            <input type="radio" name="Gender" value="Others"> Others<br><br>
+            <a><input type="submit" value="Submit"></a><br><br> By creating an account you accept our <a>terms & privacy.</a><br>
+
+            <br>Already have an account?<br><br>
+            <a href="login.php"><input type="button" value="Sign-in"></a>
+        </div>
+</form>
+</body>
+
+</html>
